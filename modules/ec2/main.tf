@@ -29,13 +29,6 @@ resource "aws_instance" "this" {
     encrypted             = local.enable_ebs_encryption
     kms_key_id            = local.kms_key_id
     delete_on_termination = var.root_volume_delete_on_termination
-
-    tags = merge(
-      local.common_tags,
-      {
-        Name = "${local.instance_name}-root-volume"
-      }
-    )
   }
 
   # Additional EBS Volumes
