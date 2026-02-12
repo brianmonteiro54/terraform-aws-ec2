@@ -20,10 +20,14 @@ resource "aws_cloudwatch_metric_alarm" "cpu_utilization" {
   treat_missing_data  = "notBreaching"
 
   dimensions = {
-  InstanceId = aws_instance.this[0].id }
+    InstanceId = aws_instance.this.id
+  }
 
-  alarm_actions = var.alarm_actions
-  ok_actions    = var.ok_actions
+  alarm_actions = concat(
+    var.alarm_actions,
+    var.enable_auto_recovery ? ["arn:aws:automate:${data.aws_region.current.id}:ec2:recover"] : []
+  )
+  ok_actions = var.ok_actions
 
   tags = local.common_tags
 }
@@ -46,9 +50,10 @@ resource "aws_cloudwatch_metric_alarm" "status_check_failed" {
   treat_missing_data  = "notBreaching"
 
   dimensions = {
-  InstanceId = aws_instance.this[0].id }
+    InstanceId = aws_instance.this.id
+  }
 
-  alarm_actions = concat(var.alarm_actions, var.enable_auto_recovery ? ["arn:aws:automate:${data.aws_region.current.name}:ec2:recover"] : [])
+  alarm_actions = concat(var.alarm_actions, var.enable_auto_recovery ? ["arn:aws:automate:${data.aws_region.current.id}:ec2:recover"] : [])
   ok_actions    = var.ok_actions
 
   tags = local.common_tags

@@ -244,7 +244,7 @@ variable "eip_prevent_destroy" {
 variable "enable_detailed_monitoring" {
   description = "Enable detailed monitoring"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "enable_cloudwatch_alarms" {
@@ -364,12 +364,6 @@ variable "instance_initiated_shutdown_behavior" {
   description = "Shutdown behavior"
   type        = string
   default     = "stop"
-}
-
-variable "ignore_ami_changes" {
-  description = "Ignore AMI changes in lifecycle"
-  type        = bool
-  default     = false
 }
 
 # Tags

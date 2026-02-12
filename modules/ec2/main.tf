@@ -7,7 +7,6 @@
 # EC2 Instance
 # -----------------------------------------------------------------------------
 resource "aws_instance" "this" {
-  count         = var.ignore_ami_changes ? 1 : 0
   ami           = var.ami_id != null ? var.ami_id : data.aws_ami.amazon_linux_2023[0].id
   instance_type = var.instance_type
   key_name      = var.key_name
@@ -112,7 +111,6 @@ resource "aws_instance" "this" {
   # Lifecycle
   lifecycle {
     ignore_changes = [ami]
-
   }
 
   # Dependencies

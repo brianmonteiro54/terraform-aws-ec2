@@ -5,32 +5,32 @@
 # Instance Information
 output "instance_id" {
   description = "ID of the EC2 instance"
-  value       = aws_instance.this[0].id
+  value       = aws_instance.this.id
 }
 
 output "instance_state" {
   description = "State of the instance"
-  value       = aws_instance.this[0].instance_state
+  value       = aws_instance.this.instance_state
 }
 
 output "instance_public_ip" {
   description = "Public IP of instance"
-  value       = aws_instance.this[0].public_ip
+  value       = aws_instance.this.public_ip
 }
 
 output "instance_private_ip" {
   description = "Private IP of instance"
-  value       = aws_instance.this[0].private_ip
+  value       = aws_instance.this.private_ip
 }
 
 output "instance_public_dns" {
   description = "Public DNS of instance"
-  value       = aws_instance.this[0].public_dns
+  value       = aws_instance.this.public_dns
 }
 
 output "instance_private_dns" {
   description = "Private DNS of instance"
-  value       = aws_instance.this[0].private_dns
+  value       = aws_instance.this.private_dns
 }
 
 # EIP Information
@@ -94,9 +94,9 @@ output "kms_key_arn" {
 
 output "connection_info" {
   value = {
-    instance_id = aws_instance.this[0].id
-    public_ip   = var.create_eip ? try(aws_eip.this[0].public_ip, null) : aws_instance.this[0].public_ip
-    private_ip  = aws_instance.this[0].private_ip
+    instance_id = aws_instance.this.id
+    public_ip   = var.create_eip ? try(aws_eip.this[0].public_ip, null) : aws_instance.this.public_ip
+    private_ip  = aws_instance.this.private_ip
   }
   description = "Informações de conexão da instância EC2"
 }
@@ -106,5 +106,5 @@ output "connection_info" {
 # Root Volume
 output "root_volume_id" {
   description = "ID of the root volume"
-  value       = aws_instance.this[0].root_block_device[0].volume_id
+  value       = aws_instance.this.root_block_device[0].volume_id
 }

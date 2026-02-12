@@ -28,7 +28,7 @@ resource "aws_eip" "this" {
 resource "aws_eip_association" "this" {
   count = var.create_eip && var.eip_prevent_destroy ? 1 : 0
 
-  instance_id   = aws_instance.this[0].id
+  instance_id   = aws_instance.this.id
   allocation_id = aws_eip.this[0].id
 
   depends_on = [aws_instance.this]
