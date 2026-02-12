@@ -36,17 +36,17 @@ output "instance_private_dns" {
 # EIP Information
 output "eip_id" {
   description = "ID of the Elastic IP"
-  value       = try(aws_eip.this[0].id, null)
+  value       = try(one(aws_eip.this).id, null)
 }
 
 output "eip_public_ip" {
   description = "Public IP of the Elastic IP"
-  value       = try(aws_eip.this[0].public_ip, null)
+  value       = try(one(aws_eip.this).public_ip, null)
 }
 
 output "eip_allocation_id" {
   description = "Allocation ID of the Elastic IP"
-  value       = try(aws_eip.this[0].allocation_id, null)
+  value       = try(one(aws_eip.this).allocation_id, null)
 }
 
 # Security Group
@@ -82,20 +82,14 @@ output "iam_instance_profile_name" {
 }
 
 # KMS
-output "kms_key_id" {
-  description = "KMS key ID"
-  value       = local.kms_key_id
-}
-
 output "kms_key_arn" {
   description = "KMS key ARN"
   value       = local.kms_key_id
 }
-
 output "connection_info" {
   value = {
     instance_id = aws_instance.this.id
-    public_ip   = var.create_eip ? try(aws_eip.this[0].public_ip, null) : aws_instance.this.public_ip
+    public_ip   = var.create_eip ? try(one(aws_eip.this).public_ip, null) : aws_instance.this.public_ip
     private_ip  = aws_instance.this.private_ip
   }
   description = "Informações de conexão da instância EC2"

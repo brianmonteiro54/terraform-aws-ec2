@@ -233,13 +233,6 @@ variable "create_eip" {
   type        = bool
   default     = false
 }
-
-variable "eip_prevent_destroy" {
-  description = "Prevent EIP destruction"
-  type        = bool
-  default     = false
-}
-
 # Monitoring
 variable "enable_detailed_monitoring" {
   description = "Enable detailed monitoring"
