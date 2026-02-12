@@ -3,10 +3,8 @@
 # =============================================================================
 
 data "aws_caller_identity" "current" {}
-
-data "aws_region" "current" {}
-
 data "aws_partition" "current" {}
+data "aws_region" "current" {}
 
 # Get the latest Amazon Linux 2023 AMI if ami_id is not provided
 data "aws_ami" "amazon_linux_2023" {
