@@ -23,11 +23,8 @@ resource "aws_cloudwatch_metric_alarm" "cpu_utilization" {
     InstanceId = aws_instance.this.id
   }
 
-  alarm_actions = concat(
-    var.alarm_actions,
-    var.enable_auto_recovery ? ["arn:aws:automate:${data.aws_region.current.id}:ec2:recover"] : []
-  )
-  ok_actions = var.ok_actions
+  alarm_actions = var.alarm_actions
+  ok_actions    = var.ok_actions
 
   tags = local.common_tags
 }
@@ -41,20 +38,23 @@ resource "aws_cloudwatch_metric_alarm" "status_check_failed" {
   alarm_name          = "${local.instance_name}-status-check-failed"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = 2
-  metric_name         = "StatusCheckFailed"
+  metric_name         = "StatusCheckFailed_System"
   namespace           = "AWS/EC2"
   period              = 300
   statistic           = "Maximum"
   threshold           = 0
-  alarm_description   = "Triggered when instance status checks fail"
+  alarm_description   = "Triggered when instance system status checks fail"
   treat_missing_data  = "notBreaching"
 
   dimensions = {
     InstanceId = aws_instance.this.id
   }
 
-  alarm_actions = concat(var.alarm_actions, var.enable_auto_recovery ? ["arn:aws:automate:${data.aws_region.current.id}:ec2:recover"] : [])
-  ok_actions    = var.ok_actions
+  alarm_actions = concat(
+    var.alarm_actions,
+    var.enable_auto_recovery ? ["arn:aws:automate:${data.aws_region.current.id}:ec2:recover"] : []
+  )
+  ok_actions = var.ok_actions
 
   tags = local.common_tags
 }
