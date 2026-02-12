@@ -6,6 +6,7 @@ name: Terraform CI Pipeline
     branches:
       - main
       - develop
+      - teste
     paths:
       - '**.tf'
       - '**.tfvars'
