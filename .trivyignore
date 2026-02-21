@@ -1,0 +1,14 @@
+# =============================================================================
+# Trivy Ignore File
+# Add check IDs here to suppress known/accepted findings.
+# Format: AVD-AWS-XXXX or one ID per line with optional comment.
+# =============================================================================
+
+# KMS key policy requires root account access — this is an AWS requirement
+# for KMS key administration and is already skip-annotated in kms.tf.
+AVD-AWS-0065
+AVD-AWS-0066
+
+# EC2 instance public IP: associate_public_ip_address defaults to false.
+# If enabled intentionally via variable, this finding is expected.
+AVD-AWS-0130
