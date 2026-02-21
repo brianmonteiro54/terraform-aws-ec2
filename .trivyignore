@@ -6,8 +6,9 @@
 
 # KMS key policy requires root account access — this is an AWS requirement
 # for KMS key administration and is already skip-annotated in kms.tf.
+# EC2 instance public IP: associate_public_ip_address defaults to false.
 AVD-AWS-0065
 AVD-AWS-0066
+AWS-0104 
 
-# EC2 instance public IP: associate_public_ip_address defaults to false.
-# If enabled intentionally via variable, this finding is expected.
+

@@ -6,6 +6,7 @@
 # Security Group for EC2 Instance
 # -----------------------------------------------------------------------------
 resource "aws_security_group" "this" {
+  # checkov:skip=CKV2_AWS_5: Security group is attached to EC2 instance in this module
   count = var.create_security_group ? 1 : 0
 
   name_prefix = "${local.instance_name}-"
