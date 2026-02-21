@@ -34,8 +34,8 @@ module "ec2" {
   # ---------------------------------------------------
   # Storage
   # ---------------------------------------------------
-  root_volume_type = "gp3"
-  root_volume_size = 20
+  root_volume_type      = "gp3"
+  root_volume_size      = 20
   enable_ebs_encryption = true
   create_kms_key        = true
 
@@ -47,7 +47,7 @@ module "ec2" {
   vpc_id                      = var.vpc_id
   create_security_group       = true
 
-  security_group_ingress_rules = []  # No inbound — SSM only
+  security_group_ingress_rules = [] # No inbound — SSM only
 
   security_group_egress_rules = [
     {
@@ -69,7 +69,7 @@ module "ec2" {
   # Monitoring
   # ---------------------------------------------------
   enable_detailed_monitoring = true
-  enable_cloudwatch_alarms   = false  # Set true and provide alarm_actions for SNS
+  enable_cloudwatch_alarms   = false # Set true and provide alarm_actions for SNS
 
   # ---------------------------------------------------
   # Security - IMDSv2 enforced (default)
