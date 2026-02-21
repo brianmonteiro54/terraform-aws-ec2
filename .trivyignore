@@ -11,4 +11,3 @@ AVD-AWS-0066
 
 # EC2 instance public IP: associate_public_ip_address defaults to false.
 # If enabled intentionally via variable, this finding is expected.
-AVD-AWS-0130

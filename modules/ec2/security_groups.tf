@@ -28,6 +28,7 @@ resource "aws_security_group" "this" {
 # Security Group Rules - Ingress
 # -----------------------------------------------------------------------------
 resource "aws_security_group_rule" "ingress" {
+  # checkov:skip=CKV2_AWS_5:Security group is attached to EC2 instance in this module
   for_each = var.create_security_group ? { for idx, rule in var.security_group_ingress_rules : idx => rule } : {}
 
   type                     = "ingress"
