@@ -101,11 +101,6 @@ terraform-aws-ec2/
 │   └── terraform-ci.yml
 └── LICENSE
 ```
-
----
-
----
-
 ## 📄 Licença
 
 [MIT License](LICENSE)
