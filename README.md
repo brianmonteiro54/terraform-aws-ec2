@@ -40,9 +40,7 @@ Módulo production-ready para instâncias EC2 com:
 
 ---
 
-## 🚀 Uso no ToggleMaster
-
-Utilizado para o servidor **Pritunl VPN**, permitindo acesso seguro ao cluster EKS (endpoint privado):
+## 🚀 Uso
 
 ```hcl
 module "pritunl_vpn" {
@@ -104,29 +102,3 @@ terraform-aws-ec2/
 ## 📄 Licença
 
 [MIT License](LICENSE)
-
-<!-- BEGIN_TF_DOCS -->
-## Requirements
-
-No requirements.
-
-## Providers
-
-No providers.
-
-## Modules
-
-No modules.
-
-## Resources
-
-No resources.
-
-## Inputs
-
-No inputs.
-
-## Outputs
-
-No outputs.
-<!-- END_TF_DOCS -->
