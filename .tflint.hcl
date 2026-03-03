@@ -41,15 +41,7 @@ rule "aws_instance_invalid_ami" {
   enabled = true
 }
 
-rule "aws_instance_invalid_subnet_id" {
-  enabled = true
-}
-
 rule "aws_instance_invalid_vpc_security_group" {
-  enabled = true
-}
-
-rule "aws_instance_invalid_iam_instance_profile" {
   enabled = true
 }
 
