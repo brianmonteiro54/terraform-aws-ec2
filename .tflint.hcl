@@ -28,12 +28,29 @@ plugin "terraform" {
 # AWS Rules
 # -----------------------------------------------------------------------------
 
-
-rule "aws_dynamodb_table_invalid_name" {
+# --- EC2 Instance ---
+rule "aws_instance_invalid_type" {
   enabled = true
 }
 
-rule "aws_kms_key_invalid_key_usage" {
+rule "aws_instance_previous_type" {
+  enabled = true
+}
+
+rule "aws_instance_invalid_ami" {
+  enabled = true
+}
+
+rule "aws_instance_invalid_vpc_security_group" {
+  enabled = true
+}
+
+rule "aws_instance_invalid_key_name" {
+  enabled = true
+}
+
+# --- Security Group ---
+rule "aws_security_group_invalid_vpc_id" {
   enabled = true
 }
 
