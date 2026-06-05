@@ -28,7 +28,7 @@ data "aws_iam_policy_document" "kms" {
   # checkov:skip=CKV_AWS_109: Root permissions required by AWS KMS key policy
   statement {
     actions   = ["kms:Encrypt", "kms:Decrypt", "kms:GenerateDataKey"]
-    resources = ["arn:aws:kms:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:key/*"]
+    resources = ["arn:aws:kms:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:key/*"]
 
     principals {
       type        = "AWS"

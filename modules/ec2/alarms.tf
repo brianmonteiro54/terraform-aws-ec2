@@ -52,7 +52,7 @@ resource "aws_cloudwatch_metric_alarm" "status_check_failed" {
 
   alarm_actions = concat(
     var.alarm_actions,
-    var.enable_auto_recovery ? ["arn:aws:automate:${data.aws_region.current.id}:ec2:recover"] : []
+    var.enable_auto_recovery ? ["arn:aws:automate:${data.aws_region.current.region}:ec2:recover"] : []
   )
   ok_actions = var.ok_actions
 
